@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+       if (x < 0)
+            return false;       
+        // 判断x的长度，比如x=232，div就等于100
+        int div = 1;
+        while (x / div >= 10)
+            div *= 10;      
+        while (x != 0)
+        {
+            // 左边开始计数
+            int left = x / div;
+            // 右边开始计数
+            int right = x % 10;      
+            if (left != right)
+                return false;    
+            x = (x % div) / 10;
+            div /= 100;
+        }
+        return true;
+    }
+}
