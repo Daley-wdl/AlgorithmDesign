@@ -1,0 +1,21 @@
+class Solution {
+    public boolean wordPattern(String pattern, String str) {
+        String[] arr = str.split(" ");
+        int len=arr.length;
+        if(len!=pattern.length())
+            return false;
+        Map<Character, String> hash = new HashMap<Character, String>();
+        for(int i=0; i<len; i++) {
+               char ch=pattern.charAt(i);
+               if(hash.containsKey(ch)) {                   
+                   if(!hash.get(ch).equals(arr[i]))
+                       return false;                   
+               } else {
+                   if(hash.containsValue(arr[i]))
+                       return false;
+                   hash.put(ch, arr[i]);                   
+               }
+        }
+        return true;
+    }
+}
